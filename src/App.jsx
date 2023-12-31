@@ -2,16 +2,25 @@ import { Provider } from "react-redux";
 import "./App.css";
 import Hero from "./components/Hero";
 import Sales from "./components/Sales";
-import { heroapi, popularsales, toprateslaes } from "./data/data";
+import {
+  heroapi,
+  highlight,
+  popularsales,
+  sneaker,
+  toprateslaes,
+} from "./data/data";
 import Store from "./app/Store";
+import FlexContent from "./components/FlexContent";
 
 function App() {
   return (
     <Provider store={Store}>
-      <main>
+      <main className="flex flex-col gap-16 relative">
         <Hero heroapi={heroapi} />
-        <Sales endpoint={popularsales} />
+        <Sales endpoint={popularsales} ifExists />
+        <FlexContent endpoint={highlight} ifExists />
         <Sales endpoint={toprateslaes} />
+        <FlexContent endpoint={sneaker} />
       </main>
     </Provider>
   );
